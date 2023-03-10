@@ -49,8 +49,7 @@ const PORT = process.env.PORT || 8000;
 const start = async () => {
   //db
   try {
-    await connectDB( process.env.MONGO_URI
-      );
+    await connectDB( process.env.MONGO_URI);
     await initNATS();
     subscribe();
     const nc = getNATS();
