@@ -44,7 +44,7 @@ app.use("/api/v1/users", userRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 
 const start = async () => {
   //db
