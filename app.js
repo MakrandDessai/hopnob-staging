@@ -49,8 +49,7 @@ const PORT = process.env.PORT || 8080;
 const start = async () => {
   //db
   try {
-    await connectDB("mongodb+srv://hopnob:hopnob123@hopnob.ecbny.mongodb.net/?retryWrites=true&w=majority"
-     // process.env.MONGO_URI
+    await connectDB( process.env.MONGO_URI
       );
     await initNATS();
     subscribe();
