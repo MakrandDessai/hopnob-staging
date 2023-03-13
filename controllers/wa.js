@@ -147,172 +147,172 @@ const handleButton = async (payload) => {
 const receiveMessage = async (req, res) => {
   console.log(req.body);
   if (typeof req.body === "string") req.body = JSON.parse(req.body);
-  let { payload } = req.body;
+  //let { payload } = req.body;
 ///////////////////////
 //Change : Makrand Dessai 
 //Date: 2 March 23
 ////////////////////////////////////////
-  // let payload  ;
-  // console.log("payload:::",req.body.type)
-  // switch (req.body.type) {
-  //   case "image":
-  //     payload = {   
-  //       "app": "Hopnob", 
-  //       timestamp: req.body.timestamp,
-  //       version: 2,
-  //       type: req.body.type,  
-  //       "payload": {  
-  //         "id": "ABEGkYaYVSEEAhAE0dyndiP9cVlr4hC5xU64",   
-  //         source: req.body.mobile,
-  //         type: req.body.type,    
-  //         "payload": {    
-  //           "caption": "Sample image",    
-  //           "url": req.body.image.url +req.body.image.signature ,  
-  //           "contentType": req.body.image.mime_type,  
-  //           "urlExpiry": 1624956794816    
-  //         },  
-  //         sender: {
-  //           phone: req.body.mobile,
-  //           name: req.body.name,
-  //           country_code: '91',
-  //           dial_code: '8x98xx21x4'
-  //         }  
-  //       } 
-  //     }
-  //     break;
-  //   case "interactive":
-  //     if( req.body.interactive.type == "list_reply"){
-  //     payload = {
-  //       "app": "Hopnob",
-  //       timestamp: req.body.timestamp,
-  //       version: 2,
-  //       type: req.body.interactive.type,  
-  //       "payload": {
-  //         "id": "ABEGkYaYVSEEAhCzqobr15BdMPcRup1fIXAJ",
-  //         source: req.body.mobile,
-  //         type: req.body.interactive.type, 
-  //         "payload": {
-  //                 "title": req.body.interactive.list_reply.title,
-  //                 "id": req.body.interactive.list_reply.id.msgid,
-  //                 "reply":req.body.interactive.list_reply.id.reply,
-  //                 "postbackText":req.body.interactive.list_reply.id.postbackText,
-  //                 "description": req.body.interactive.list_reply.description
-  //             },
-  //             sender: {
-  //               phone: req.body.mobile,
-  //               name: req.body.name,
-  //               country_code: '91',
-  //               dial_code: '8x98xx21x4'
-  //             }  ,
-  //         "context": {
-  //             "id": "gBEGkYaYVSEEAgnPGGVYGg1uNU4",
-  //             "gsId": "cbdafe39-1023-42a7-89d6-6c01a3388bb5"
-  //         }
-  //       }
-  //     }
+    let payload  ;
+  console.log("payload:::",req.body.type)
+  switch (req.body.type) {
+    case "image":
+      payload = {   
+        "app": "Hopnob", 
+        timestamp: req.body.timestamp,
+        version: 2,
+        type: req.body.type,  
+        "payload": {  
+          "id": "ABEGkYaYVSEEAhAE0dyndiP9cVlr4hC5xU64",   
+          source: req.body.mobile,
+          type: req.body.type,    
+          "payload": {    
+            "caption": "Sample image",    
+            "url": req.body.image.url +req.body.image.signature ,  
+            "contentType": req.body.image.mime_type,  
+            "urlExpiry": 1624956794816    
+          },  
+          sender: {
+            phone: req.body.mobile,
+            name: req.body.name,
+            country_code: '91',
+            dial_code: '8x98xx21x4'
+          }  
+        } 
+      }
+      break;
+    case "interactive":
+      if( req.body.interactive.type == "list_reply"){
+      payload = {
+        "app": "Hopnob",
+        timestamp: req.body.timestamp,
+        version: 2,
+        type: req.body.interactive.type,  
+        "payload": {
+          "id": "ABEGkYaYVSEEAhCzqobr15BdMPcRup1fIXAJ",
+          source: req.body.mobile,
+          type: req.body.interactive.type, 
+          "payload": {
+                  "title": req.body.interactive.list_reply.title,
+                  "id": req.body.interactive.list_reply.id.msgid,
+                  "reply":req.body.interactive.list_reply.id.reply,
+                  "postbackText":req.body.interactive.list_reply.id.postbackText,
+                  "description": req.body.interactive.list_reply.description
+              },
+              sender: {
+                phone: req.body.mobile,
+                name: req.body.name,
+                country_code: '91',
+                dial_code: '8x98xx21x4'
+              }  ,
+          "context": {
+              "id": "gBEGkYaYVSEEAgnPGGVYGg1uNU4",
+              "gsId": "cbdafe39-1023-42a7-89d6-6c01a3388bb5"
+          }
+        }
+      }
 
-  //   }
-  //   else if(req.body.interactive.type == "button_reply"){
-  //   payload=  {
-  //       "app": "Hopnob",
-  //       timestamp: req.body.timestamp,
-  //       version: 2,
-  //       type: req.body.interactive.type, 
-  //       "payload": {
-  //         "id": "ABEGkYaYVSEEAhCzqobr15BdMPcRup1fIXAJ",
-  //         source: req.body.mobile,
-  //         type: req.body.interactive.type, 
-  //         "payload": {    
-  //                 "title":req.body.interactive.button_reply.title,   
-  //                 "id": req.body.interactive.button_reply.id.msgid,    
-  //                 "reply":req.body.interactive.button_reply.id.reply   
-  //             },  
-  //             sender: {
-  //               phone: req.body.mobile,
-  //               name: req.body.name,
-  //               country_code: '91',
-  //               dial_code: '8x98xx21x4'
-  //             }  , 
-  //         "context": {    
-  //             "id": "gBEGkYaYVSEEAgkvE0f1ZkfXX78",    
-  //             "gsId": "123b0fb2-0620-493b-8f7e-5a1ceb6d8c58"  
-  //         }   
-  //       } 
-  //     }
-  //   }
+    }
+    else if(req.body.interactive.type == "button_reply"){
+    payload=  {
+        "app": "Hopnob",
+        timestamp: req.body.timestamp,
+        version: 2,
+        type: req.body.interactive.type, 
+        "payload": {
+          "id": "ABEGkYaYVSEEAhCzqobr15BdMPcRup1fIXAJ",
+          source: req.body.mobile,
+          type: req.body.interactive.type, 
+          "payload": {    
+                  "title":req.body.interactive.button_reply.title,   
+                  "id": req.body.interactive.button_reply.id.msgid,    
+                  "reply":req.body.interactive.button_reply.id.reply   
+              },  
+              sender: {
+                phone: req.body.mobile,
+                name: req.body.name,
+                country_code: '91',
+                dial_code: '8x98xx21x4'
+              }  , 
+          "context": {    
+              "id": "gBEGkYaYVSEEAgkvE0f1ZkfXX78",    
+              "gsId": "123b0fb2-0620-493b-8f7e-5a1ceb6d8c58"  
+          }   
+        } 
+      }
+    }
 
-  //     //handleList(payload.payload);
-  //     break;
-  //   case "button_reply":
-  //     payload = {
-  //       "app": "Hopnob",
-  //       timestamp: req.body.timestamp,
-  //       version: 2,
-  //       type: req.body.type, 
-  //       "payload": {
-  //         "id": "ABEGkYaYVSEEAhCzqobr15BdMPcRup1fIXAJ",
-  //         source: req.body.mobile,
-  //         type: req.body.type,
-  //         "payload": {    
-  //                 "title": "First",   
-  //                 "id": "qr1",    
-  //                 "reply":"First 1"   
-  //             },  
-  //             sender: {
-  //               phone: req.body.mobile,
-  //               name: req.body.name,
-  //               country_code: '91',
-  //               dial_code: '8x98xx21x4'
-  //             }  , 
-  //         "context": {    
-  //             "id": "gBEGkYaYVSEEAgkvE0f1ZkfXX78",    
-  //             "gsId": "123b0fb2-0620-493b-8f7e-5a1ceb6d8c58"  
-  //         }   
-  //       } 
-  //     }
-  //     break;
-  //   case "text":
-  //     payload = {
-  //       app: 'Hopnob',
-  //       timestamp: req.body.timestamp,
-  //       version: 2,
-  //       type: req.body.type,
-  //       payload: {
-  //         id: 'ABEGkYaYVSEEAhAE0dyndiP9cVlr4hC5xU64',
-  //         source: req.body.mobile,
-  //         type: req.body.type,
-  //         payload: { text: req.body.text},
-  //         sender: {
-  //           phone: req.body.mobile,
-  //           name: req.body.name,
-  //           country_code: '91',
-  //           dial_code: '8x98xx21x4'
-  //         }
-  //       }
-  //     };
-  //     break;
-  //   case "quick_reply":
-  //     payload = {
-  //       app: 'Hopnob',
-  //       timestamp: req.body.timestamp,
-  //       version: 2,
-  //       type: req.body.type,
-  //       payload: {
-  //         id: 'ABEGkYaYVSEEAhAE0dyndiP9cVlr4hC5xU64',
-  //         source: req.body.mobile,
-  //         type: req.body.type,
-  //         payload: { text: req.body.text},
-  //         sender: {
-  //           phone: req.body.mobile,
-  //           name: req.body.name,
-  //           country_code: '91',
-  //           dial_code: '8x98xx21x4'
-  //         }
-  //       }
-  //     };
-  //   default:
-  //     break;
-  // }
+      //handleList(payload.payload);
+      break;
+    case "button_reply":
+      payload = {
+        "app": "Hopnob",
+        timestamp: req.body.timestamp,
+        version: 2,
+        type: req.body.type, 
+        "payload": {
+          "id": "ABEGkYaYVSEEAhCzqobr15BdMPcRup1fIXAJ",
+          source: req.body.mobile,
+          type: req.body.type,
+          "payload": {    
+                  "title": "First",   
+                  "id": "qr1",    
+                  "reply":"First 1"   
+              },  
+              sender: {
+                phone: req.body.mobile,
+                name: req.body.name,
+                country_code: '91',
+                dial_code: '8x98xx21x4'
+              }  , 
+          "context": {    
+              "id": "gBEGkYaYVSEEAgkvE0f1ZkfXX78",    
+              "gsId": "123b0fb2-0620-493b-8f7e-5a1ceb6d8c58"  
+          }   
+        } 
+      }
+      break;
+    case "text":
+      payload = {
+        app: 'Hopnob',
+        timestamp: req.body.timestamp,
+        version: 2,
+        type: req.body.type,
+        payload: {
+          id: 'ABEGkYaYVSEEAhAE0dyndiP9cVlr4hC5xU64',
+          source: req.body.mobile,
+          type: req.body.type,
+          payload: { text: req.body.text},
+          sender: {
+            phone: req.body.mobile,
+            name: req.body.name,
+            country_code: '91',
+            dial_code: '8x98xx21x4'
+          }
+        }
+      };
+      break;
+    case "quick_reply":
+      payload = {
+        app: 'Hopnob',
+        timestamp: req.body.timestamp,
+        version: 2,
+        type: req.body.type,
+        payload: {
+          id: 'ABEGkYaYVSEEAhAE0dyndiP9cVlr4hC5xU64',
+          source: req.body.mobile,
+          type: req.body.type,
+          payload: { text: req.body.text},
+          sender: {
+            phone: req.body.mobile,
+            name: req.body.name,
+            country_code: '91',
+            dial_code: '8x98xx21x4'
+          }
+        }
+      };
+    default:
+      break;
+  }
 
   /////////////////////////////////////////////
 
